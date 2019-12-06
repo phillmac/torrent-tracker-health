@@ -14,6 +14,7 @@ function read(uri, options) {
     var allTorrents = await Promise.all(uris.map(p => singleRead(p, options).catch(e => e)));
     var noErrors = allTorrents.filter(result => !(result instanceof Error));
     var torrents = noErrors.filter((e, i) => noErrors.findIndex(a => a.hash === e.hash) === i);
+    console.debug(`Torrents: ${JSON.stringify(torrents)}`)
 
     resolve({
       torrents: torrents,
