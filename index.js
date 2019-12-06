@@ -60,6 +60,7 @@ async function scrapeAll(req) {
   var hashes = req.torrents.map(t => t.hash);
   console.debug(`Hashes: ${JSON.stringify(hashes)}`)
   let slices = utils.chunk(hashes, req.options.batchSize);
+  console.debug(`Slices: ${JSON.stringify(slices)}`)
 
   for (const subhashes of slices) {
     for (const trUri of req.options.trackers) {
