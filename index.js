@@ -81,7 +81,7 @@ async function scrapeAll(req) {
       });
     }
   }
-
+  console.debug(`Req: ${JSON.stringify(req)}`)
   return req;
 }
 
