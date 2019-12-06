@@ -59,10 +59,11 @@ async function scrapeAll(req) {
   // Loop over trackers and hashes in batches
   var hashes = req.torrents.map(t => t.hash);
   let slices = utils.chunk(hashes, req.options.batchSize);
-  console.debug(`Slices: ${JSON.stringify(slices)}`)
 
   for (const subhashes of slices) {
+    console.debug(`subhashes: ${JSON.stringify(subhashes)}`)
     for (const trUri of req.options.trackers) {
+      console.debug(`trUri: ${JSON.stringify(trUri)}`)
       let data = await scrape(trUri, subhashes);
 
       // Add the peer counts to the req
