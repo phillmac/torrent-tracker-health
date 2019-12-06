@@ -63,8 +63,6 @@ async function scrapeAll(req) {
   for (const subhashes of slices) {
     for (const trUri of req.options.trackers) {
       let data = await scrape(trUri, subhashes);
-      console.debug(`Data: ${JSON.stringify(data)}`)
-
 
       // Add the peer counts to the req
       Object.entries(data).map(e => {
